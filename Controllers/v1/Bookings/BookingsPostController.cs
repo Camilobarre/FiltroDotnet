@@ -7,6 +7,7 @@ namespace FiltroDotnet.Controllers.v1.Bookings
 {
     [ApiController]
     [Route("api/v1/bookings/post")]
+    [Tags("bookings")]
     public class BookingsPostController : BookingsController
     {
         public BookingsPostController(IBookingRepository bookingRepository) : base(bookingRepository)

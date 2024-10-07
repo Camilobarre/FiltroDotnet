@@ -5,6 +5,7 @@ namespace FiltroDotnet.Controllers.v1.Bookings
 {
     [ApiController]
     [Route("api/v1/bookings")]
+    [Tags("bookings")]
     public class BookingsController : ControllerBase
     {
         protected readonly IBookingRepository _bookingRepository; // Repositorio protegido

@@ -7,6 +7,7 @@ namespace FiltroDotnet.Controllers.v1.Guests
 {
     [ApiController]
     [Route("api/v1/guests/put")]
+    [Tags("guests")]
     public class GuestsPutController : GuestsController
     {
         public GuestsPutController(IGuestRepository guestRepository) : base(guestRepository)

@@ -1,4 +1,3 @@
-
 using FiltroDotnet.Models;
 
 namespace FiltroDotnet.Repositories

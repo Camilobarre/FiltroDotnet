@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FiltroDotnet.Controllers.v1.Auth
 {
     [ApiController]
-    [Route("api/v1/authentication")]
+    [Route("api/v1/auth")]
+    [Tags("auth")]
     public class AuthController : ControllerBase
     {
         protected readonly IUserRepository _userRepository; // Repositorio protegido

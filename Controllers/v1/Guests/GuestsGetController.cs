@@ -6,6 +6,7 @@ namespace FiltroDotnet.Controllers.v1.Guests
 {
     [ApiController]
     [Route("api/v1/guests/get")]
+    [Tags("guests")]
     public class GuestsGetController : GuestsController // Hereda de GuestsController
     {
         public GuestsGetController(IGuestRepository guestRepository)

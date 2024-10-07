@@ -6,6 +6,7 @@ namespace FiltroDotnet.Controllers.v1.Bookings
 {
     [ApiController]
     [Route("api/v1/bookings/delete")]
+    [Tags("bookings")]
     public class BookingsDeleteController : BookingsController
     {
         public BookingsDeleteController(IBookingRepository bookingRepository) : base(bookingRepository)

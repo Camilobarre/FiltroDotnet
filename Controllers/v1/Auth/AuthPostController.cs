@@ -10,16 +10,17 @@ namespace FiltroDotnet.Controllers.v1.Auth
 {
     [ApiController]
     [Route("api/v1/auth/post")]
+    [Tags("auth")]
     public class AuthPostController : AuthController
     {
         private readonly ApplicationDbContext _context;
-        private readonly Utilities _utilities;
+        private readonly IUtilities _utilities; // Cambia a IUtilities
 
-        public AuthPostController(IUserRepository userRepository, ApplicationDbContext context, IUserRepository utilities)
+        public AuthPostController(IUserRepository userRepository, ApplicationDbContext context, IUtilities utilities)
             : base(userRepository)
         {
             _context = context;
-            _utilities = (Utilities?)utilities;
+            _utilities = utilities; // Asigna sin necesidad de casting
         }
 
         [HttpPost("register")]

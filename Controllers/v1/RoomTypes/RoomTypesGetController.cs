@@ -5,6 +5,7 @@ namespace FiltroDotnet.Controllers.v1.RoomTypes
 {
     [ApiController]
     [Route("api/v1/room_types")]
+    [Tags("roomTypes")]
     public class RoomTypesGetController : RoomTypesController
     {
         public RoomTypesGetController(IRoomTypeRepository roomTypeRepository) : base(roomTypeRepository)

@@ -6,6 +6,7 @@ namespace FiltroDotnet.Controllers.v1.Guests
 {
     [ApiController]
     [Route("api/v1/guests/delete")]
+    [Tags("guests")]
     public class GuestsDeleteController : GuestsController
     {
         public GuestsDeleteController(IGuestRepository guestRepository) : base(guestRepository)

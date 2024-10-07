@@ -5,6 +5,7 @@ namespace FiltroDotnet.Controllers.v1.RoomTypes
 {
     [ApiController]
     [Route("api/v1/room_types")]
+    [Tags("roomTypes")]
     public class RoomTypesController : ControllerBase
     {
         protected readonly IRoomTypeRepository _roomTypeRepository; // Repositorio protegido

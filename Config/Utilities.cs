@@ -1,14 +1,14 @@
-
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using FiltroDotnet.Models;
+using FiltroDotnet.Repositories;
 using Microsoft.IdentityModel.Tokens;
 
 namespace FiltroDotnet.Config
 {
-    public class Utilities
+    public class Utilities : IUtilities
     {
         public string EncryptSHA256(string input)
         {

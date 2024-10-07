@@ -33,6 +33,8 @@ builder.Services.AddScoped<IRoomRepository, RoomServices>();
 builder.Services.AddScoped<IRoomTypeRepository, RoomTypeServices>();
 builder.Services.AddScoped<IBookingRepository, BookingServices>();
 builder.Services.AddScoped<IGuestRepository, GuestServices>();
+builder.Services.AddScoped<IUserRepository, UserServices>();
+builder.Services.AddScoped<IUtilities, Utilities>(); 
 
 builder.Services.AddSingleton<Utilities>();
 
