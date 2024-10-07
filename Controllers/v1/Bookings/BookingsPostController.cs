@@ -1,5 +1,6 @@
 using FiltroDotnet.Models;
 using FiltroDotnet.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiltroDotnet.Controllers.v1.Bookings
@@ -13,6 +14,7 @@ namespace FiltroDotnet.Controllers.v1.Bookings
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateBooking(Booking booking)
         {
             await _bookingRepository.AddBooking(booking); // Usa el repositorio de la clase base

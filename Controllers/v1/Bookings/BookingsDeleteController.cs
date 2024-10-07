@@ -1,4 +1,5 @@
 using FiltroDotnet.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiltroDotnet.Controllers.v1.Bookings
@@ -12,6 +13,7 @@ namespace FiltroDotnet.Controllers.v1.Bookings
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteBooking(int id)
         {
             var existingBooking = await _bookingRepository.GetBookingById(id);

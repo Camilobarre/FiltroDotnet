@@ -41,5 +41,4 @@ namespace FiltroDotnet.Models
         public Guest? Guest { get; set; }
         public Employee? Employee { get; set; }
     }
-
 }

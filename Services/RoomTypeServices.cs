@@ -23,5 +23,12 @@ namespace FiltroDotnet.Services
         {
             return await _context.RoomTypes.FindAsync(id);
         }
+
+        public async Task<IEnumerable<RoomType>> GetRoomTypesWithRoomsAsync()
+        {
+            return await _context.RoomTypes
+                .Include(rt => rt.Rooms) // Incluir las habitaciones relacionadas
+                .ToListAsync();
+        }
     }
 }

@@ -37,5 +37,4 @@ namespace FiltroDotnet.Models
         public RoomType? RoomType { get; set; }
         public ICollection<Booking>? Bookings { get; set; }
     }
-
 }

@@ -1,4 +1,5 @@
 using FiltroDotnet.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiltroDotnet.Controllers.v1.Guests
@@ -13,6 +14,7 @@ namespace FiltroDotnet.Controllers.v1.Guests
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllGuests()
         {
             var guests = await _guestRepository.GetAllGuests(); // Usa el repositorio de la clase base
@@ -20,6 +22,7 @@ namespace FiltroDotnet.Controllers.v1.Guests
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetGuestById(int id)
         {
             var guest = await _guestRepository.GetGuestById(id); // Usa el repositorio de la clase base
@@ -28,6 +31,7 @@ namespace FiltroDotnet.Controllers.v1.Guests
         }
 
         [HttpGet("search/{keyword}")]
+        [Authorize]
         public async Task<IActionResult> SearchGuest(string keyword)
         {
             var guests = await _guestRepository.SearchGuests(keyword); // Usa el repositorio de la clase base

@@ -20,6 +20,14 @@ namespace FiltroDotnet.Data
         {
             RoomTypeSeeders.SeedRoomTypes(modelBuilder); // Asegúrate de que este método exista
             RoomSeeder.SeedRooms(modelBuilder); // Asegúrate de que este método exista
+
+            // Configuración de la relación entre Room y RoomType
+            modelBuilder.Entity<Room>()
+                .HasOne(r => r.RoomType)
+                .WithMany(rt => rt.Rooms)
+                .HasForeignKey(r => r.RoomTypeId);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

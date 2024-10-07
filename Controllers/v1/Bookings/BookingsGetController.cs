@@ -1,10 +1,12 @@
 using FiltroDotnet.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiltroDotnet.Controllers.v1.Bookings
 {
     [ApiController]
     [Route("api/v1/bookings/get")]
+    [Tags("bookings")]
     public class BookingsGetController : BookingsController
     {
         public BookingsGetController(IBookingRepository bookingRepository) : base(bookingRepository)
@@ -12,6 +14,7 @@ namespace FiltroDotnet.Controllers.v1.Bookings
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetBookingById(int id)
         {
             var booking = await _bookingRepository.GetBookingById(id); // Usa el repositorio de la clase base
@@ -20,6 +23,7 @@ namespace FiltroDotnet.Controllers.v1.Bookings
         }
 
         [HttpGet("search/{identification_number}")]
+        [Authorize]
         public async Task<IActionResult> GetBookingsByGuestIdentification(string identification_number)
         {
             var bookings = await _bookingRepository.SearchBookingsByGuestIdentification(identification_number); // Usa el repositorio de la clase base

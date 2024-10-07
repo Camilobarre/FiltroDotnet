@@ -1,4 +1,5 @@
 using FiltroDotnet.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiltroDotnet.Controllers.v1.Guests
@@ -12,6 +13,7 @@ namespace FiltroDotnet.Controllers.v1.Guests
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteGuest(int id)
         {
             var existingGuest = await _guestRepository.GetGuestById(id);

@@ -1,4 +1,5 @@
 using FiltroDotnet.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiltroDotnet.Controllers.v1.Rooms
@@ -20,6 +21,7 @@ namespace FiltroDotnet.Controllers.v1.Rooms
         }
 
         [HttpGet("occupied")]
+        [Authorize]
         public async Task<IActionResult> GetOccupiedRooms()
         {
             var rooms = await _roomRepository.GetOccupiedRooms();
@@ -27,6 +29,7 @@ namespace FiltroDotnet.Controllers.v1.Rooms
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetRoomById(int id)
         {
             var room = await _roomRepository.GetRoomById(id);
@@ -35,6 +38,7 @@ namespace FiltroDotnet.Controllers.v1.Rooms
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllRooms()
         {
             var rooms = await _roomRepository.GetAllRooms();

@@ -1,5 +1,6 @@
 using FiltroDotnet.Models;
 using FiltroDotnet.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiltroDotnet.Controllers.v1.Guests
@@ -13,6 +14,7 @@ namespace FiltroDotnet.Controllers.v1.Guests
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> UpdateGuest(int id, Guest guest)
         {
             if (id != guest.Id) return BadRequest();
