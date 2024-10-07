@@ -10,7 +10,7 @@ namespace FiltroDotnet.Controllers.v1.Guests
     public class GuestsGetController : GuestsController // Hereda de GuestsController
     {
         public GuestsGetController(IGuestRepository guestRepository)
-            : base(guestRepository) // Llama al constructor de la clase base
+            : base(guestRepository) // Constructor que llama a la clase base
         {
         }
 
@@ -18,16 +18,16 @@ namespace FiltroDotnet.Controllers.v1.Guests
         [Authorize]
         public async Task<IActionResult> GetAllGuests()
         {
-            var guests = await _guestRepository.GetAllGuests(); // Usa el repositorio de la clase base
-            return Ok(guests);
+            var guests = await _guestRepository.GetAllGuests(); // Obtiene todos los huéspedes
+            return Ok(guests); // Devuelve en formato JSON
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetGuestById")]
         [Authorize]
         public async Task<IActionResult> GetGuestById(int id)
         {
-            var guest = await _guestRepository.GetGuestById(id); // Usa el repositorio de la clase base
-            if (guest == null) return NotFound();
+            var guest = await _guestRepository.GetGuestById(id); // Obtiene por ID
+            if (guest == null) return NotFound(); // Devuelve 404 si no se encuentra
             return Ok(guest);
         }
 
@@ -35,9 +35,8 @@ namespace FiltroDotnet.Controllers.v1.Guests
         [Authorize]
         public async Task<IActionResult> SearchGuest(string keyword)
         {
-            var guests = await _guestRepository.SearchGuests(keyword); // Usa el repositorio de la clase base
-            return Ok(guests);
+            var guests = await _guestRepository.SearchGuests(keyword); // Busca por palabra clave
+            return Ok(guests); // Devuelve los resultados de la búsqueda
         }
     }
-
 }

@@ -20,15 +20,12 @@ namespace FiltroDotnet.Models
         [Column("room_type_id")]  // Llave foránea y nombre de la columna
         public int RoomTypeId { get; set; }
 
-        [Required]
         [Column("price_per_night", TypeName = "decimal(18,2)")]  // Columna con tipo de dato decimal
         public decimal PricePerNight { get; set; }
 
-        [Required]
         [Column("availability")]  // Columna boolean
         public bool Availability { get; set; }
 
-        [Required]
         [Column("max_occupancy_persons")]  // Columna para la capacidad máxima
         [Range(1, 10, ErrorMessage = "The occupancy must be between 1 and 10.")]
         public int MaxOccupancyPersons { get; set; }

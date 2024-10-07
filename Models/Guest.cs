@@ -10,12 +10,12 @@ namespace FiltroDotnet.Models
         [Column("id")]  // Nombre de la columna
         public int Id { get; set; }
 
-        [Required]
+
         [MaxLength(255)]
         [Column("first_name")]
         public string FirstName { get; set; } = string.Empty;
 
-        [Required]
+
         [MaxLength(255)]
         [Column("last_name")]
         public string LastName { get; set; } = string.Empty;
@@ -35,7 +35,6 @@ namespace FiltroDotnet.Models
         [Column("phone_number")]
         public string PhoneNumber { get; set; } = string.Empty;
 
-        [Required]
         [Column("birthdate")]
         public DateTime Birthdate { get; set; }
 

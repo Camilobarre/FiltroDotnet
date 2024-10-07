@@ -1,3 +1,4 @@
+using FiltroDotnet.DTOs;
 using FiltroDotnet.Models;
 using FiltroDotnet.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -12,17 +13,19 @@ namespace FiltroDotnet.Controllers.v1.Guests
         public GuestPostController(IGuestRepository guestRepository) : base(guestRepository)
         {
         }
-        
+
         [HttpPost]
-        public async Task<IActionResult> RegisterGuest(Guest guest)
+        public async Task<IActionResult> RegisterGuest([FromBody] GuestDTO guestDto)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            await _guestRepository.AddGuest(guest);
-            return CreatedAtAction(nameof(GuestsGetController.GetGuestById), new { id = guest.Id }, guest);
+            await _guestRepository.AddGuest(guestDto);
+
+            // Usar CreatedAtRoute con el nombre de la ruta "GetGuestById"
+            return CreatedAtRoute("GetGuestById", new { id = guestDto.Id }, guestDto);
         }
     }
 }

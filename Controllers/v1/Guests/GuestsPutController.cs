@@ -1,3 +1,4 @@
+using FiltroDotnet.DTOs;
 using FiltroDotnet.Models;
 using FiltroDotnet.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -16,12 +17,22 @@ namespace FiltroDotnet.Controllers.v1.Guests
 
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> UpdateGuest(int id, Guest guest)
+        public async Task<IActionResult> UpdateGuest(int id, GuestDTO guestDto)
         {
-            if (id != guest.Id) return BadRequest();
+            if (id != guestDto.Id) return BadRequest();
+
+            // Obtener el guest existente
             var existingGuest = await _guestRepository.GetGuestById(id);
             if (existingGuest == null) return NotFound();
-            await _guestRepository.UpdateGuest(guest);
+
+            // Actualizar las propiedades del guest existente con los datos del DTO
+            existingGuest.FirstName = guestDto.FirstName;
+            existingGuest.LastName = guestDto.LastName;
+            existingGuest.Email = guestDto.Email;
+            existingGuest.PhoneNumber = guestDto.PhoneNumber;
+
+            // Pasar el guest actualizado al servicio
+            await _guestRepository.UpdateGuest(existingGuest);
             return NoContent();
         }
     }
