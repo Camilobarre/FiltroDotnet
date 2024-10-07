@@ -1,5 +1,7 @@
 using DotNetEnv;
 using FiltroDotnet.Data;
+using FiltroDotnet.Repositories;
+using FiltroDotnet.Services;
 using Microsoft.EntityFrameworkCore;
 
 Env.Load();  // Carga las variables de entorno desde un archivo .env
@@ -21,6 +23,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.Parse("8.0.20-mysql")));
 
 // Add services to the container.
+// Registra los servicios
+builder.Services.AddScoped<IRoomRepository, RoomServices>();
+builder.Services.AddScoped<IRoomTypeRepository, RoomTypeServices>();
+builder.Services.AddScoped<IBookingRepository, BookingServices>();
+builder.Services.AddScoped<IGuestRepository, GuestServices>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
