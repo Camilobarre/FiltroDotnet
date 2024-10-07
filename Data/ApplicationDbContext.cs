@@ -1,4 +1,5 @@
 using FiltroDotnet.Models;
+using FiltroDotnet.Seeders;
 using Microsoft.EntityFrameworkCore;
 
 namespace FiltroDotnet.Data
@@ -13,6 +14,11 @@ namespace FiltroDotnet.Data
         public DbSet<Employee> Employees { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-    }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            RoomTypeSeeders.SeedRoomTypes(modelBuilder); // Asegúrate de que este método exista
+            RoomSeeder.SeedRooms(modelBuilder); // Asegúrate de que este método exista
+        }
+    }
 }
