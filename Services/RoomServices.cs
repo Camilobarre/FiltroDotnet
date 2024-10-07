@@ -55,5 +55,13 @@ namespace FiltroDotnet.Services
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<(int AvailableCount, int OccupiedCount)> GetRoomStatusAsync()
+        {
+            var availableCount = await _context.Rooms.CountAsync(r => r.Availability);
+            var occupiedCount = await _context.Rooms.CountAsync(r => !r.Availability);
+
+            return (availableCount, occupiedCount);
+        }
     }
 }

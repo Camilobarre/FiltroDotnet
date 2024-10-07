@@ -8,6 +8,7 @@ namespace FiltroDotnet.Repositories
         Task<Room?> GetRoomById(int id);
         Task<IEnumerable<Room>> GetAvailableRooms();
         Task<IEnumerable<Room>> GetOccupiedRooms();
+        Task<(int AvailableCount, int OccupiedCount)> GetRoomStatusAsync();
         Task AddRoom(Room room);
         Task UpdateRoom(Room room);
         Task DeleteRoom(int id);
