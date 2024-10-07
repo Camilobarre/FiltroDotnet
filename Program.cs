@@ -1,4 +1,24 @@
+using DotNetEnv;
+using FiltroDotnet.Data;
+using Microsoft.EntityFrameworkCore;
+
+Env.Load();  // Carga las variables de entorno desde un archivo .env
+
+// Obtiene las variables de entorno necesarias para conectarse a la base de datos
+var host = Environment.GetEnvironmentVariable("DB_HOST");
+var databaseName = Environment.GetEnvironmentVariable("DB_NAME");
+var port = Environment.GetEnvironmentVariable("DB_PORT");
+var username = Environment.GetEnvironmentVariable("DB_USERNAME");
+var password = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+// Crea la cadena de conexión utilizando las variables de entorno
+var connectionString = $"server={host};port={port};database={databaseName};uid={username};password={password}";
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Conexión con la base de datos usando MySQL y la versión especificada
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.Parse("8.0.20-mysql")));
 
 // Add services to the container.
 
